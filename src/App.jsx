@@ -46,7 +46,9 @@ export default function App() {
       {/* Navbar */}
       <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
         <div className="container navbar-inner">
-          <a href="#" className="logo">Scalyo Agency</a>
+          <a href="/" className="logo" aria-label="Scalyo Agency — accueil">
+            <img src="/scalyo-lockup-light.svg" alt="Scalyo Agency" height="34" style={{ display: 'block' }} />
+          </a>
           <div className="nav-links">
             {navItems.map(([label, href]) => (
               <a key={href} href={href}>{label}</a>
