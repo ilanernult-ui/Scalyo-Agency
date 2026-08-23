@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "scalyo-3d",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["--prefix", "scalyo-3d", "run", "dev"],
+      "port": 5173
+    }
+  ]
+}

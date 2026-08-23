@@ -1,0 +1,99 @@
+@import 'tailwindcss';
+
+/* ------------------------------------------------------------------ */
+/*  Thème — dark editorial premium (inspi Linear / Stripe / Vercel)    */
+/* ------------------------------------------------------------------ */
+@theme {
+  /* Typographies */
+  --font-sans: 'Inter Tight', ui-sans-serif, system-ui, sans-serif;
+  --font-serif: 'Instrument Serif', ui-serif, Georgia, serif;
+
+  /* Fond sombre */
+  --color-ink-950: #050506;
+  --color-ink-900: #0a0a0c;
+  --color-ink-800: #101014;
+  --color-ink-700: #17171c;
+  --color-ink-600: #232329;
+
+  /* Texte */
+  --color-mist-100: #f4f4f6;
+  --color-mist-300: #c7c7cf;
+  --color-mist-500: #8a8a95;
+  --color-mist-700: #5a5a64;
+
+  /* Accent bleu — à utiliser avec parcimonie */
+  --color-accent: #3b5bff;
+  --color-accent-soft: #6d84ff;
+
+  /* Divers */
+  --color-hairline: rgba(255, 255, 255, 0.08);
+}
+
+/* ------------------------------------------------------------------ */
+/*  Base                                                               */
+/* ------------------------------------------------------------------ */
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  html {
+    /* Lenis pilote le scroll : on désactive le smooth natif */
+    scroll-behavior: auto;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    background-color: var(--color-ink-950);
+    color: var(--color-mist-300);
+    font-family: var(--font-sans);
+    font-feature-settings: 'ss01', 'cv01';
+  }
+
+  ::selection {
+    background: var(--color-accent);
+    color: #fff;
+  }
+
+  /* Accent éditorial : serif italic */
+  .accent {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+  }
+
+  /* Lenis — recommandé par la lib */
+  html.lenis,
+  html.lenis body {
+    height: auto;
+  }
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+  .lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+  }
+  .lenis.lenis-stopped {
+    overflow: hidden;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/*  Grain overlay — léger, plein écran, non interactif                 */
+/* ------------------------------------------------------------------ */
+.grain {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  pointer-events: none;
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .grain {
+    display: none;
+  }
+}
